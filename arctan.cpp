@@ -5,12 +5,11 @@ using namespace std;
 float arctan(float x)
 {
 	float e = x;
-	float t = 1/x;
-	float u = -1/x;
-	float sqr = x * x;
-	float r = 0;
-	float y = 0;
 	int i = 1;
+	float r = 0;
+	float sqr = x * x;
+	float t = 1/x;
+	float y = 0;
 	if ((x>0)&&(x<1)) // 0<x<1时，用泰勒展开计算arctan的值。 
 	{
 		while ((e / i > 1e-15)||(e / i < -1e-15)) //限制计算的精度 
@@ -24,7 +23,7 @@ float arctan(float x)
 	
 	else if (x==1) //x=1时，直接输出结果 
 	{
-		r = x*M_PI/4;
+		r = x*PI/4;
 	}
 	
 	else if (x>1) // x>1时，级数绝对值发散，用等价转换公式arctan(1/x) = Pi/2 - arctan(x)计算 
