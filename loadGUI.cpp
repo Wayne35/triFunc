@@ -3,6 +3,8 @@
 #include<cstdlib>
 #include<conio.h>
 #include "loadGUI.h"
+#include "trifuncs.h"
+#define PI        3.14159265358979323846
 #define X "    请选择你需要功能:"
 #define A " >> 正弦计算sin"
 #define B " >> 余弦计算cos"
@@ -151,24 +153,64 @@ float inputNum(int mode){
 	float num;
 	switch(mode){
 		case 1://该模式用户选择的是角度形式输入的sin 
-			cout << "请输入角度：" << endl;
+			cout << "请输入角度：" ;
+			cin >> num ;	
 			break;
 		case 2://该模式用户选择的是弧度形式输入的sin 
-			cout << "请输入弧度：" << endl;
+			cout << "请输入弧度：" ;
+			cin >> num ; 
 			break;
 		case 3://该模式用户选择的是角度形式输入的cos
-			cout << "请输入角度：" << endl;
+			cout << "请输入角度：" ;
+			cin >> num ;
 			break;
 		case 4://该模式用户选择的是弧度形式输入的cos
-			cout << "请输入弧度：" << endl;
+			cout << "请输入弧度：" ;
+			cin >> num ;
 			break;
 		case 5://该模式用户选择的是arcsin
-			cout << "请输入反正弦值(该值应该位于-1到1之间)：" << endl;
+			cout << "请输入反正弦值(该值应该位于-1到1之间)：" ;
+			cin >> num ;			
 			break;
 		case 6://该模式用户选择的是arctan
-			cout << "请输入反正切值：" << endl;
+			cout << "请输入反正切值：";
+			cin >> num ;
 			break;
 	}
-	cin >> num ;
 	return num;
+}
+//计算 
+void calculate(float num, int mode){
+	float result = 0;
+	switch(mode){
+		case 1://输出sin结果 
+			result = Sin(1,num);
+			cout << endl<< "sin"<<num<<"°= "<<result<<endl;	
+			break;
+		case 2://输出sin结果 
+			result = Sin(2,num);
+			cout << endl << " " << num << " rad = " << (num/PI)*180 << "°" ;
+			cout << endl <<" sin"<<(num/PI)*180<<"°= "<<result<<endl;		
+			break;
+		case 3://输出cos结果 
+			result = cos(1,num);
+			cout << endl <<" cos"<<num<<"°= "<<result<<endl;			
+			break;
+		case 4://输出cos结果 
+			result = cos(2,num);
+			cout << endl <<  " " << num << " rad = " << (num/PI)*180 << "°" ;
+			cout << endl <<" cos"<<(num/PI)*180<<"°= "<<result<<endl;		
+			break;
+		case 5://输出artsin结果 
+			result = arcsin(num);
+			cout << endl <<" artsin"<<num<<" = "<<result<<endl;				
+			break;
+		case 6://输出arctan结果 
+			result = arctan(num);
+			cout << endl <<" arctan"<<num<<" = "<<result<<endl;	
+			break;
+	}
+	cout<< endl; 
+	system("PAUSE");
+	exit(0);
 }
