@@ -1,7 +1,7 @@
-#include<iostream>
-#include<string>
-#include<cstdlib>
-#include<conio.h>
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <conio.h>
 #include "loadGUI.h"
 #include "trifuncs.h"
 #define PI        3.14159265358979323846
@@ -150,7 +150,7 @@ int loadGUI(){
 
 //根据不同模式确定输入的值 
 float inputNum(int mode){
-	float num;
+	string num;
 	switch(mode){
 		case 1://该模式用户选择的是角度形式输入的sin 
 			cout << "请输入角度：" ;
@@ -177,7 +177,13 @@ float inputNum(int mode){
 			cin >> num ;
 			break;
 	}
-	return num;
+	try { 
+	return std::stof(num);
+	}
+	catch(exception &e){
+		cout << "含有非法字符，请重新输入：" <<endl;
+		inputNum(mode);
+	} 
 }
 //计算 
 void calculate(float num, int mode){
@@ -203,14 +209,17 @@ void calculate(float num, int mode){
 			break;
 		case 5://输出artsin结果 
 			result = arcsin(num);
-			cout << endl <<" artsin"<<num<<" = "<<result<<endl;				
+			if(num>1||num<-1){
+				cout << "输入数字不在要求区间，请重新输入：" <<endl;
+				calculate(inputNum(mode),  mode);
+			} else{
+				cout << endl <<" artsin"<<num<<" = "<<result<<endl;	
+			} 				
 			break;
 		case 6://输出arctan结果 
 			result = arctan(num);
 			cout << endl <<" arctan"<<num<<" = "<<result<<endl;	
 			break;
 	}
-	cout<< endl; 
-	system("PAUSE");
-	exit(0);
+	cout << endl; 
 }

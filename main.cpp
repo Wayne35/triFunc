@@ -12,5 +12,8 @@ using namespace std;
 int main(){
 	int mode = loadGUI();
 	float num = inputNum(mode);	
-	calculate(num,mode);	
+	calculate(num,mode);
+		system("PAUSE");
+	system("cls");
+	main();
 }
