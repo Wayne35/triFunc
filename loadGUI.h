@@ -12,4 +12,6 @@ int loadGUI();
 
 float inputNum(int mode);
 
+void calculate(float num, int mode);
+
 #endif
